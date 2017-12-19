@@ -16,8 +16,8 @@ spec:
         #imagePullPolicy: Never        
         ports:
         - containerPort: 5002
-      #imagePullSecrets:
-      #- name: us-secret
+      imagePullSecrets:
+      - name: us-secret
 ---
 apiVersion: v1
 kind: Service
