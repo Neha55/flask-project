@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: flask-app-3
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flask-app-3
+    spec:
+      containers:
+      - name: flask-app-3
+        image: webapp:1
+        # for local development against minikube registry
+        #imagePullPolicy: Never        
+        ports:
+        - containerPort: 5002
+      #imagePullSecrets:
+      #- name: us-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-app-service-3
+  labels:
+    app: flask-app-service-3
+spec:
+  type: NodePort
+  ports:
+    # the port that this service should serve on
+    - port: 5002
+  # label keys and values that must match in order to receive traffic for this service
+  selector:
+    app: flask-app-3
