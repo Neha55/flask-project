@@ -20,9 +20,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: flask-app-service
+  name: flask-app-service-1
   labels:
-    app: flask-app-service
+    app: flask-app-service-1
 spec:
   type: NodePort
   ports:
